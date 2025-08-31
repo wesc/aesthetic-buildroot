@@ -1,0 +1,10 @@
+# Aesthetic rpi3 specific defconfigs
+
+# Custom boot params
+BR2_PACKAGE_RPI_FIRMWARE_CONFIG_FILE="board/aebr/rpi3/config.txt"
+BR2_PACKAGE_RPI_FIRMWARE_CMDLINE_FILE="board/aebr/rpi3/cmdline.txt"
+
+# WiFi firmware - RPi-specific packages
+BR2_PACKAGE_LINUX_FIRMWARE=y
+BR2_PACKAGE_BRCMFMAC_SDIO_FIRMWARE_RPI=y
+BR2_PACKAGE_BRCMFMAC_SDIO_FIRMWARE_RPI_WIFI=y
