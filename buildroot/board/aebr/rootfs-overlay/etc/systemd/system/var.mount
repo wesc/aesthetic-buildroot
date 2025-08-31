@@ -1,0 +1,11 @@
+[Unit]
+Description=Mount /var as tmpfs
+
+[Mount]
+What=tmpfs
+Where=/var
+Type=tmpfs
+Options=mode=1777,size=50M,noatime
+
+[Install]
+WantedBy=local-fs.target

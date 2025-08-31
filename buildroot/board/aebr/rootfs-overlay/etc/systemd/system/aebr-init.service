@@ -1,0 +1,11 @@
+[Unit]
+Description=Initialize system from /boot configs
+After=systemd-remount-fs.service
+Before=iwd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/aebr-init
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Mount /boot if we need to
+if ! mountpoint -q /boot; then
+  if grep -q "rpi.platform=true" /proc/cmdline; then
+    mount -o ro,defaults /dev/mmcblk0p1 /boot
+  fi
+fi
+
+if [ -f /boot/aebr.conf ]; then
+    . /boot/aebr.conf
+fi
+
+
+if [ -n "$HOSTNAME" ]; then
+    hostname "$HOSTNAME"
+fi
+
+# Default wifi region to US
+if [ -z "$WIFI_REGION" ]; then
+  WIFI_REGION="US"
+fi
+
+# Set up iwd
+mkdir -p /run/iwd
+cat << EOF > /run/iwd/main.conf
+[General]
+EnableNetworkConfiguration=true
+CountryCode=$WIFI_REGION
+
+[Network]
+NameResolvingService=systemd
+EOF
+if [ -n "$WIFI_SSID" ] && [ -n "$WIFI_PASSWORD" ]; then
+    mkdir -p /var/lib/iwd
+    cat << EOF > "/var/lib/iwd/${WIFI_SSID}.psk"
+[Security]
+Passphrase=$WIFI_PASSWORD
+EOF
+fi
