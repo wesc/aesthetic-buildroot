@@ -1,0 +1,79 @@
+config BR2_PACKAGE_LIBRESPOT
+  bool "librespot"
+  depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
+  select BR2_PACKAGE_HOST_RUSTC
+  select BR2_PACKAGE_HOST_CMAKE
+  select BR2_PACKAGE_CA_CERTIFICATES
+  select BR2_PACKAGE_OPENSSL
+  help
+    Open Source Spotify client library
+
+comment "Compilation options"
+  depends on BR2_PACKAGE_LIBRESPOT
+
+config BR2_PACKAGE_LIBRESPOT_VERSION
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "version"
+  default "miles-0.1"
+  help
+    Use either a branch name or commit from github.com/librespot-org/librespot.
+
+config BR2_PACKAGE_LIBRESPOT_BUILD_OPTS
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "build options"
+  default "--no-default-features --features native-tls,rodio-backend,with-libmdns"
+
+comment "Configuration variables"
+  depends on BR2_PACKAGE_LIBRESPOT
+
+config BR2_PACKAGE_LIBRESPOT_CONF_NAME
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "Display name"
+  default "Miles Audio Player"
+  help
+    The name shown in the interface.
+
+config BR2_PACKAGE_LIBRESPOT_CONF_DEVICE_TYPE
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "Device type"
+  default "avr"
+  help
+    The device type influences the icon displayed in the interface. Can be:
+    computer, tablet, tv, avr, stb, audiodongle, gameconsole, castaudio, castvideo,
+    automobile, smartwatch, chromebook, carthing, homething
+
+config BR2_PACKAGE_LIBRESPOT_CONF_SYSTEM_CACHE
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "System cache directory"
+  default "/etc/spotify"
+  help
+    Path to a directory with system files, e.g. credentials.json and volume config.
+
+config BR2_PACKAGE_LIBRESPOT_CONF_DISABLE_DISCOVERY
+  depends on BR2_PACKAGE_LIBRESPOT
+  bool "Disable zeroconf discovery"
+  default "n"
+  help
+    Disable discovery mode, so the device will only be visible to other
+    players in your account.
+
+config BR2_PACKAGE_LIBRESPOT_CONF_AUTOPLAY
+  depends on BR2_PACKAGE_LIBRESPOT
+  bool "Enable autoplay"
+  default "y"
+  help
+    Automatically play similar songs when your playlist ends.
+
+config BR2_PACKAGE_LIBRESPOT_CONF_VOLUME_CTRL
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "Volume control"
+  default "log"
+  help
+    The type of volume control to use from fixed, linear, log or cubic.
+
+config BR2_PACKAGE_LIBRESPOT_CONF_BITRATE
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "Audio Bitrate"
+  default "160"
+  help
+    Choose the bitrate in kbps from 96, 160 or 320.

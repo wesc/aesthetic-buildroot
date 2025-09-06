@@ -1,0 +1,28 @@
+[Unit]
+Description=Librespot Spotify Connect Client
+Documentation=https://github.com/librespot-org/librespot
+After=network-online.target chronyd.service
+Wants=network-online.target
+Requires=chronyd.service
+
+[Service]
+Type=simple
+User=nobody
+Group=audio
+EnvironmentFile=/etc/default/librespot
+ExecStart=/usr/bin/librespot \
+  --name "$LIBRESPOT_NAME" \
+  --device-type "$LIBRESPOT_DEVICE_TYPE" \
+  --system-cache "$LIBRESPOT_SYSTEM_CACHE" \
+  --cache "$LIBRESPOT_CACHE" \
+  --volume-ctrl "$LIBRESPOT_VOLUME_CTRL" \
+  --bitrate "$LIBRESPOT_BITRATE" \
+  $LIBRESPOT_DISABLE_DISCOVERY \
+  $LIBRESPOT_AUTOPLAY
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
