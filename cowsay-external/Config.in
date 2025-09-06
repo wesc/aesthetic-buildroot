@@ -1,0 +1,1 @@
+source "$BR2_EXTERNAL_COWSAY_PATH/package/rust-cowsay/Config.in"

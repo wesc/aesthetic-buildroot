@@ -1,0 +1,8 @@
+config BR2_PACKAGE_RUST_COWSAY
+	bool "rust-cowsay"
+	depends on BR2_PACKAGE_HOST_RUSTC_TARGET_ARCH_SUPPORTS
+	select BR2_PACKAGE_HOST_RUSTC
+	help
+	  A Rust implementation of the classic cowsay program.
+
+	  https://github.com/wesc/rust-cowsay
