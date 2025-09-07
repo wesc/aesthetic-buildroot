@@ -1,0 +1,16 @@
+[Unit]
+Description=Miles Audio Volume Adjustment
+After=sound.target
+Before=librespot.service
+Wants=sound.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/miles-volume start
+User=root
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

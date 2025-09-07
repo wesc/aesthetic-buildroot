@@ -1,0 +1,5 @@
+config BR2_PACKAGE_MILES_INIT
+	bool "miles-init"
+	help
+	  Miles Audio initialization package that sets up audio configuration,
+	  volume controls, and enables required services at boot time.
