@@ -7,11 +7,11 @@ Requires=chrony.service
 
 [Service]
 Type=simple
-User=nobody
-Group=audio
+User=librespot
+Group=librespot
 EnvironmentFile=/etc/default/librespot
 ExecStartPre=/bin/mkdir -p "$LIBRESPOT_CACHE" "$LIBRESPOT_SYSTEM_CACHE"
-ExecStartPre=/bin/chown nobody:audio "$LIBRESPOT_CACHE" "$LIBRESPOT_SYSTEM_CACHE"
+ExecStartPre=/bin/chown librespot:librespot "$LIBRESPOT_CACHE" "$LIBRESPOT_SYSTEM_CACHE"
 ExecStart=/usr/bin/librespot \
   --name "$LIBRESPOT_NAME" \
   --device-type "$LIBRESPOT_DEVICE_TYPE" \
@@ -19,9 +19,7 @@ ExecStart=/usr/bin/librespot \
   --cache "$LIBRESPOT_CACHE" \
   --volume-ctrl "$LIBRESPOT_VOLUME_CTRL" \
   --bitrate "$LIBRESPOT_BITRATE" \
-  --cache-size-limit "$LIBRESPOT_CACHE_SIZE_LIMIT" \
-  $LIBRESPOT_DISABLE_DISCOVERY \
-  $LIBRESPOT_AUTOPLAY
+  --cache-size-limit "$LIBRESPOT_CACHE_SIZE_LIMIT"
 Restart=always
 RestartSec=5
 StandardOutput=journal
