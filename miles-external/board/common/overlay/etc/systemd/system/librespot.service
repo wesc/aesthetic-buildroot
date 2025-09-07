@@ -7,11 +7,11 @@ Requires=chrony.service
 
 [Service]
 Type=simple
-User=nobody
-Group=audio
+User=librespot
+Group=librespot
 EnvironmentFile=/etc/default/librespot
 ExecStartPre=/bin/mkdir -p "$LIBRESPOT_CACHE" "$LIBRESPOT_SYSTEM_CACHE"
-ExecStartPre=/bin/chown nobody:audio "$LIBRESPOT_CACHE" "$LIBRESPOT_SYSTEM_CACHE"
+ExecStartPre=/bin/chown librespot:librespot "$LIBRESPOT_CACHE" "$LIBRESPOT_SYSTEM_CACHE"
 ExecStart=/usr/bin/librespot \
   --name "$LIBRESPOT_NAME" \
   --device-type "$LIBRESPOT_DEVICE_TYPE" \

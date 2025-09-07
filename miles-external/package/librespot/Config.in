@@ -64,21 +64,6 @@ config BR2_PACKAGE_LIBRESPOT_CONF_CACHE_SIZE_LIMIT
     Limit the size of the cache directory. Use suffixes like K, M, G for
     kilobytes, megabytes, gigabytes respectively.
 
-config BR2_PACKAGE_LIBRESPOT_CONF_DISABLE_DISCOVERY
-  depends on BR2_PACKAGE_LIBRESPOT
-  bool "Disable zeroconf discovery"
-  default "n"
-  help
-    Disable discovery mode, so the device will only be visible to other
-    players in your account.
-
-config BR2_PACKAGE_LIBRESPOT_CONF_AUTOPLAY
-  depends on BR2_PACKAGE_LIBRESPOT
-  bool "Enable autoplay"
-  default "y"
-  help
-    Automatically play similar songs when your playlist ends.
-
 config BR2_PACKAGE_LIBRESPOT_CONF_VOLUME_CTRL
   depends on BR2_PACKAGE_LIBRESPOT
   string "Volume control"
