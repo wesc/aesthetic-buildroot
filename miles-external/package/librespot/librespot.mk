@@ -21,16 +21,6 @@ define LIBRESPOT_INSTALL_INIT_SYSTEMD
 	echo "LIBRESPOT_DEVICE_TYPE=\"$(BR2_PACKAGE_LIBRESPOT_CONF_DEVICE_TYPE)\"" >> $(TARGET_DIR)/etc/default/librespot
 	echo "LIBRESPOT_SYSTEM_CACHE=\"$(BR2_PACKAGE_LIBRESPOT_CONF_SYSTEM_CACHE)\"" >> $(TARGET_DIR)/etc/default/librespot
 	echo "LIBRESPOT_CACHE=\"$(BR2_PACKAGE_LIBRESPOT_CONF_CACHE)\"" >> $(TARGET_DIR)/etc/default/librespot
-	if [[ x$(BR2_PACKAGE_LIBRESPOT_CONF_DISABLE_DISCOVERY) == xy ]]; then \
-		echo "LIBRESPOT_DISABLE_DISCOVERY=\"--disable-discovery\"" >> $(TARGET_DIR)/etc/default/librespot; \
-	else \
-		echo "LIBRESPOT_DISABLE_DISCOVERY=\"\"" >> $(TARGET_DIR)/etc/default/librespot; \
-	fi
-	if [[ x$(BR2_PACKAGE_LIBRESPOT_CONF_AUTOPLAY) == xy ]]; then \
-		echo "LIBRESPOT_AUTOPLAY=\"yes\"" >> $(TARGET_DIR)/etc/default/librespot; \
-	else \
-		echo "LIBRESPOT_AUTOPLAY=\"\"" >> $(TARGET_DIR)/etc/default/librespot; \
-	fi
 	echo "LIBRESPOT_VOLUME_CTRL=\"$(BR2_PACKAGE_LIBRESPOT_CONF_VOLUME_CTRL)\"" >> $(TARGET_DIR)/etc/default/librespot
 	echo "LIBRESPOT_BITRATE=\"$(BR2_PACKAGE_LIBRESPOT_CONF_BITRATE)\"" >> $(TARGET_DIR)/etc/default/librespot
 	echo "LIBRESPOT_CACHE_SIZE_LIMIT=\"$(BR2_PACKAGE_LIBRESPOT_CONF_CACHE_SIZE_LIMIT)\"" >> $(TARGET_DIR)/etc/default/librespot
