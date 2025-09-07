@@ -1,1 +1,0 @@
-librespot	-1	librespot	-1	=1000	/var/lib/librespot	/bin/false	audio,avahi	Librespot user
