@@ -1,0 +1,38 @@
+#!/bin/sh
+#
+# Miles Audio Volume Adjustment Script
+# Sets all audio controls to maximum volume and unmutes them
+#
+
+set -e
+
+log() {
+    echo "miles-volume: $*"
+}
+
+set_audio_volume() {
+    log "Setting all audio controls to maximum volume..."
+    
+    # Get all available mixer controls and set them to 100% and unmute
+    /usr/bin/amixer scontrols | grep -o "'[^']*'" | while read -r control; do
+        log "Setting control $control to 100% and unmuting"
+        /usr/bin/amixer sset "$control" 100% unmute > /dev/null 2>&1 || {
+            log "Warning: Failed to set control $control"
+        }
+    done
+    
+    log "Audio volume adjustment complete"
+}
+
+case "$1" in
+    start|set|adjust)
+        set_audio_volume
+        ;;
+    *)
+        echo "Usage: $0 {start|set|adjust}"
+        echo "Adjusts all audio controls to maximum volume and unmutes them"
+        exit 1
+        ;;
+esac
+
+exit 0

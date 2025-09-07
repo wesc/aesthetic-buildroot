@@ -14,6 +14,10 @@ define LIBRESPOT_INSTALL_INIT_SYSTEMD
 	# install systemd service file
 	$(INSTALL) -D -m 0644 $(LIBRESPOT_PKGDIR)/librespot.service $(TARGET_DIR)/usr/lib/systemd/system/librespot.service
 
+	# enable systemd service
+	mkdir -p $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants
+	ln -sf /usr/lib/systemd/system/librespot.service $(TARGET_DIR)/etc/systemd/system/multi-user.target.wants/librespot.service
+
 	# create configuration file
 	mkdir -p $(TARGET_DIR)/etc/default/
 	echo "# librespot configuration" > $(TARGET_DIR)/etc/default/librespot
