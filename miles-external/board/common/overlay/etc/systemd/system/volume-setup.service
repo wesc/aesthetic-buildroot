@@ -1,0 +1,11 @@
+[Unit]
+Description=Set audio volume to maximum
+After=sound.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/sh -c 'for control in $(/usr/bin/amixer scontrols | grep -o "'\''[^'\'']*'\''"); do /usr/bin/amixer sset "$control" 100%% unmute > /dev/null 2>&1; done'
+
+[Install]
+WantedBy=multi-user.target

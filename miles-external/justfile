@@ -12,3 +12,13 @@ make-defconfigs:
         configs/rpi3/defconfig \
         configs/common_defconfig
     mv buildroot/configs/.config buildroot/configs/aebr_rpi3_defconfig
+
+justfile:
+    ../buildroot/support/kconfig/merge_config.sh -m -O configs \
+        ../buildroot/configs/aebr_rpi3_defconfig \
+        configs/miles.config
+    mv configs/.config configs/miles_rpi3_defconfig
+    ../buildroot/support/kconfig/merge_config.sh -m -O configs \
+        ../buildroot/configs/aebr_qemu_defconfig \
+        configs/miles.config
+    mv configs/.config configs/miles_qemu_defconfig

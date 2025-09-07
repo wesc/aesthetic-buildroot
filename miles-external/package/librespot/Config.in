@@ -45,9 +45,24 @@ config BR2_PACKAGE_LIBRESPOT_CONF_DEVICE_TYPE
 config BR2_PACKAGE_LIBRESPOT_CONF_SYSTEM_CACHE
   depends on BR2_PACKAGE_LIBRESPOT
   string "System cache directory"
-  default "/etc/spotify"
+  default "/tmp/librespot"
   help
     Path to a directory with system files, e.g. credentials.json and volume config.
+
+config BR2_PACKAGE_LIBRESPOT_CONF_CACHE
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "Cache directory"
+  default "/var/cache/librespot"
+  help
+    Path to a directory where librespot stores cached audio files.
+
+config BR2_PACKAGE_LIBRESPOT_CONF_CACHE_SIZE_LIMIT
+  depends on BR2_PACKAGE_LIBRESPOT
+  string "Cache size limit"
+  default "128M"
+  help
+    Limit the size of the cache directory. Use suffixes like K, M, G for
+    kilobytes, megabytes, gigabytes respectively.
 
 config BR2_PACKAGE_LIBRESPOT_CONF_DISABLE_DISCOVERY
   depends on BR2_PACKAGE_LIBRESPOT
