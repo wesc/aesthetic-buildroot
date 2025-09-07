@@ -5,6 +5,8 @@
 ################################################################################
 
 MILES_INIT_VERSION = 1.0
+MILES_INIT_SITE = $(BR2_EXTERNAL_MILES_PATH)/package/miles-init
+MILES_INIT_SITE_METHOD = local
 MILES_INIT_LICENSE = MIT
 
 define MILES_INIT_INSTALL_TARGET_CMDS
