@@ -74,6 +74,6 @@ config BR2_PACKAGE_LIBRESPOT_CONF_VOLUME_CTRL
 config BR2_PACKAGE_LIBRESPOT_CONF_BITRATE
   depends on BR2_PACKAGE_LIBRESPOT
   string "Audio Bitrate"
-  default "160"
+  default "320"
   help
     Choose the bitrate in kbps from 96, 160 or 320.

@@ -1,9 +1,9 @@
 [Unit]
 Description=Librespot Spotify Connect Client
 Documentation=https://github.com/librespot-org/librespot
-After=network-online.target chronyd.service
+After=network-online.target chrony.service
 Wants=network-online.target
-Requires=chronyd.service
+Requires=chrony.service
 
 [Service]
 Type=simple
