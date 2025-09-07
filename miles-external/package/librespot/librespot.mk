@@ -8,7 +8,7 @@ LIBRESPOT_LICENSE = MIT
 LIBRESPOT_VERSION = $(call qstrip,$(or $(BR2_PACKAGE_LIBRESPOT_VERSION),78ce118d32912adfb2705481f69c83df6a88211f))
 LIBRESPOT_SITE = $(call github,wesc,librespot,$(LIBRESPOT_VERSION))
 LIBRESPOT_CARGO_BUILD_OPTS = $(call qstrip,$(BR2_PACKAGE_LIBRESPOT_BUILD_OPTS))
-LIBRESPOT_DEPENDENCIES += host-rust-bindgen alsa-lib openssl
+LIBRESPOT_DEPENDENCIES += host-rust-bindgen70 alsa-lib openssl
 
 define LIBRESPOT_INSTALL_INIT_SYSTEMD
 	# install systemd service file
