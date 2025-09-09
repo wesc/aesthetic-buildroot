@@ -1,0 +1,10 @@
+config BR2_PACKAGE_HOST_RUST_BINDGEN70
+	bool "host rust-bindgen70"
+	depends on BR2_PACKAGE_HOST_RUSTC
+	select BR2_PACKAGE_CLANG
+	help
+	  Rust bindgen tool for generating bindings to C libraries.
+	  
+	  This version is based on bindgen 0.70.1.
+	  
+	  https://github.com/rust-lang/rust-bindgen
