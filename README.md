@@ -25,15 +25,36 @@ A buildroot distribution with taste.
   first partition of the disk as /boot.
 
 
-## Build
+## Development
+
+Much of the development is driven by the `justfile`. After a change to
+any Buildroot or Linux fragments in
+`buildroot/board/aebr/{qemu,rpi3}/` you should rebuild the defconfigs:
+
+```bash
+just make-defconfigs
+```
+
+Then to build a target, for example Qemu:
+
+```bash
+just build-qemu
+```
+
+Go get some coffee, this might be a few hours.
+
+Run `just` for the full menu of commands.
+
+
+## Direct Build
+
+You can build directly with the Buildroot commands:
 
 ```bash
 cd buildroot
 make aebr_qemu_defconfig
 make
 ```
-
-Go get some coffee, this might be a few hours.
 
 
 ## Qemu Boot

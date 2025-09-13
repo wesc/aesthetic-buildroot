@@ -13,5 +13,26 @@ make-defconfigs:
         buildroot/board/aebr/common_defconfig
     mv buildroot/configs/.config buildroot/configs/aebr_rpi3_defconfig
 
+build-all: && build-qemu build-rpi3
+
+[working-directory: 'buildroot']
+build-qemu:
+    make O=output/qemu aebr_qemu_defconfig
+    make O=output/qemu
+
+[working-directory: 'buildroot']
+build-rpi3:
+    make O=output/rpi3 aebr_rpi3_defconfig
+    make O=output/rpi3
+
+[working-directory: 'buildroot']
+clean:
+    make clean
+
+[working-directory: 'buildroot']
+distclean:
+    make distclean
+
+[working-directory: 'buildroot/output/qemu/images']
 boot-qemu:
-    qemu-system-aarch64 -M virt -cpu cortex-a53 -nographic -smp 1 -kernel output/images/Image -append "rootwait root=/dev/vda ro console=ttyAMA0" -netdev user,id=eth0 -device virtio-net-device,netdev=eth0 -drive file=output/images/rootfs.ext4,if=none,format=raw,id=hd0 -device virtio-blk-device,drive=hd0
+    qemu-system-aarch64 -M virt -cpu cortex-a53 -nographic -smp 1 -kernel Image -append "rootwait root=/dev/vda ro console=ttyAMA0" -netdev user,id=eth0 -device virtio-net-device,netdev=eth0 -drive file=rootfs.ext4,if=none,format=raw,id=hd0 -device virtio-blk-device,drive=hd0
