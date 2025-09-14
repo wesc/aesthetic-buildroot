@@ -1,3 +1,10 @@
 HOSTNAME=aesthetic
+
+# Don't be lazy! disable SSH_ROOT_PASSWORD_LOGIN and use
+# SSH_ROOT_AUTHORIZED_KEY instead. SSH_ROOT_AUTHORIZED_KEY is optional
+# but highly recommended.
+DISABLE_SSH_ROOT_PASSWORD_LOGIN=y
+SSH_ROOT_AUTHORIZED_KEY="contents of id_ed25519.pub file"
+
 WIFI_SSID=my-home-network
 WIFI_PASSWORD=my-home-network-password

@@ -16,6 +16,25 @@ if [ -n "$HOSTNAME" ]; then
     hostname "$HOSTNAME"
 fi
 
+# set up root ssh login
+mkdir -p /run/dropbear
+
+if [ "$DISABLE_SSH_ROOT_PASSWORD_LOGIN" == "y" ]; then
+    cat << EOF > /run/dropbear/default
+# ssh in as root via password is disabled (use /boot/aebr.conf's SSH_ROOT_AUTHORIZED_KEY instead)
+DROPBEAR_ARGS="-g"
+EOF
+else
+    cat << EOF > /run/dropbear/default
+# ssh in as root via password is allowed
+#DROPBEAR_ARGS="-g"
+EOF
+fi
+
+if [ -n "$SSH_ROOT_AUTHORIZED_KEY" ]; then
+    echo $SSH_ROOT_AUTHORIZED_KEY > /run/dropbear/authorized_keys
+fi
+
 # Default wifi region to US
 if [ -z "$WIFI_REGION" ]; then
   WIFI_REGION="US"
