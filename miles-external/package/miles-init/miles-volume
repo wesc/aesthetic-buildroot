@@ -12,7 +12,7 @@ log() {
 
 set_audio_volume() {
     log "Setting all audio controls to maximum volume..."
-    
+
     # Get all available mixer controls and set them to 100% and unmute
     /usr/bin/amixer scontrols | grep -o "'[^']*'" | while read -r control; do
         log "Setting control $control to 100% and unmuting"
@@ -20,7 +20,7 @@ set_audio_volume() {
             log "Warning: Failed to set control $control"
         }
     done
-    
+
     log "Audio volume adjustment complete"
 }
 
