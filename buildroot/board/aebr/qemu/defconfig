@@ -1,0 +1,4 @@
+# Aesthetic qemu specific defconfigs
+
+# Linux kernel extras
+BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES="board/aebr/qemu/linux.fragment"

@@ -16,6 +16,10 @@ BR2_TARGET_ROOTFS_EXT2_4=y
 # BR2_TARGET_ROOTFS_TAR is not set
 BR2_PACKAGE_HOST_QEMU=y
 BR2_PACKAGE_HOST_QEMU_SYSTEM_MODE=y
+# Aesthetic qemu specific defconfigs
+
+# Linux kernel extras
+BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES="board/aebr/qemu/linux.fragment"
 # Common Aesthetic Buildroot configs
 
 # System configuration
@@ -29,9 +33,6 @@ BR2_INIT_SYSTEMD=y
 
 # Overlay
 BR2_ROOTFS_OVERLAY="board/aebr/rootfs-overlay"
-
-# Linux kernel extras
-BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES="board/aebr/qemu/linux.fragment"
 
 # BTRFS
 BR2_PACKAGE_BTRFS_PROGS=y

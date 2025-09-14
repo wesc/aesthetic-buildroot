@@ -12,9 +12,6 @@ BR2_INIT_SYSTEMD=y
 # Overlay
 BR2_ROOTFS_OVERLAY="board/aebr/rootfs-overlay"
 
-# Linux kernel extras
-BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES="board/aebr/linux.fragment"
-
 # BTRFS
 BR2_PACKAGE_BTRFS_PROGS=y
 

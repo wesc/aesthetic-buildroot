@@ -33,6 +33,9 @@ BR2_PACKAGE_HOST_KMOD_XZ=y
 BR2_PACKAGE_HOST_MTOOLS=y
 # Aesthetic rpi3 specific defconfigs
 
+# Linux kernel extras
+BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES="board/aebr/rpi3/linux.fragment"
+
 # Custom boot params
 BR2_PACKAGE_RPI_FIRMWARE_CONFIG_FILE="board/aebr/rpi3/config.txt"
 BR2_PACKAGE_RPI_FIRMWARE_CMDLINE_FILE="board/aebr/rpi3/cmdline.txt"
@@ -54,9 +57,6 @@ BR2_INIT_SYSTEMD=y
 
 # Overlay
 BR2_ROOTFS_OVERLAY="board/aebr/rootfs-overlay"
-
-# Linux kernel extras
-BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES="board/aebr/rpi3/linux.fragment"
 
 # BTRFS
 BR2_PACKAGE_BTRFS_PROGS=y

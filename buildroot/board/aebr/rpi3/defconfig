@@ -1,5 +1,8 @@
 # Aesthetic rpi3 specific defconfigs
 
+# Linux kernel extras
+BR2_LINUX_KERNEL_CONFIG_FRAGMENT_FILES="board/aebr/rpi3/linux.fragment"
+
 # Custom boot params
 BR2_PACKAGE_RPI_FIRMWARE_CONFIG_FILE="board/aebr/rpi3/config.txt"
 BR2_PACKAGE_RPI_FIRMWARE_CMDLINE_FILE="board/aebr/rpi3/cmdline.txt"
