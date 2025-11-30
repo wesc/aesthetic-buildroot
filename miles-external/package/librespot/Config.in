@@ -15,14 +15,14 @@ comment "Compilation options"
 config BR2_PACKAGE_LIBRESPOT_VERSION
   depends on BR2_PACKAGE_LIBRESPOT
   string "version"
-  default "miles-0.1"
+  default "miles-0.7.1"
   help
     Use either a branch name or commit from github.com/librespot-org/librespot.
 
 config BR2_PACKAGE_LIBRESPOT_BUILD_OPTS
   depends on BR2_PACKAGE_LIBRESPOT
   string "build options"
-  default "--no-default-features --features native-tls,rodio-backend,with-libmdns"
+  default ""
 
 comment "Configuration variables"
   depends on BR2_PACKAGE_LIBRESPOT

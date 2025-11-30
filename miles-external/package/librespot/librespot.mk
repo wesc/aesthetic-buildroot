@@ -5,7 +5,7 @@
 ################################################################################
 
 LIBRESPOT_LICENSE = MIT
-LIBRESPOT_VERSION = $(call qstrip,$(or $(BR2_PACKAGE_LIBRESPOT_VERSION),78ce118d32912adfb2705481f69c83df6a88211f))
+LIBRESPOT_VERSION = $(call qstrip,$(or $(BR2_PACKAGE_LIBRESPOT_VERSION),c41da31d991ea133beeb9e48c8d1af91c3407dc9))
 LIBRESPOT_SITE = $(call github,wesc,librespot,$(LIBRESPOT_VERSION))
 LIBRESPOT_CARGO_BUILD_OPTS = $(call qstrip,$(BR2_PACKAGE_LIBRESPOT_BUILD_OPTS))
 LIBRESPOT_DEPENDENCIES += host-rust-bindgen70 alsa-lib openssl
