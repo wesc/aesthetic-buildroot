@@ -18,12 +18,12 @@ build-all: && build-qemu build-rpi3
 [working-directory: 'buildroot']
 build-qemu:
     make O=output/qemu aebr_qemu_defconfig
-    make O=output/qemu
+    time make O=output/qemu
 
 [working-directory: 'buildroot']
 build-rpi3:
     make O=output/rpi3 aebr_rpi3_defconfig
-    make O=output/rpi3
+    time make O=output/rpi3
 
 [working-directory: 'buildroot']
 clean:
