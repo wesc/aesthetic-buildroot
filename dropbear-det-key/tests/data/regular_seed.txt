@@ -1,0 +1,3 @@
+This is a regular seed file for testing.
+It has some predictable content.
+1234567890
