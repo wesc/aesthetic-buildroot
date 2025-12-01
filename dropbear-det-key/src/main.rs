@@ -1,5 +1,6 @@
 use std::env;
 use std::fs;
+use std::io::Write;
 #[cfg(unix)]
 use std::os::unix::fs::PermissionsExt;
 use sha2::{Sha256, Digest};
@@ -42,30 +43,37 @@ fn generate_key_content(seed_content: &[u8]) -> Vec<u8> {
     key_data
 }
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+// Minimal error handling wrapper to avoid pulling in full error formatting machinery
+fn run() -> Result<(), String> {
     let args: Vec<String> = env::args().collect();
     if args.len() != 3 {
-        eprintln!("Usage: {} <input_seed_file> <output_key_file>", args[0]);
-        std::process::exit(1);
+        return Err(format!("Usage: {} <input_seed_file> <output_key_file>\n", args.get(0).unwrap_or(&"dropbear-det-key".to_string())));
     }
 
     let input_path = &args[1];
     let output_path = &args[2];
 
-    let seed_content = fs::read(input_path)?;
+    let seed_content = fs::read(input_path).map_err(|e| format!("Failed to read input: {}\n", e))?;
     let key_data = generate_key_content(&seed_content);
 
-    fs::write(output_path, key_data)?;
+    fs::write(output_path, key_data).map_err(|e| format!("Failed to write output: {}\n", e))?;
 
     // Set permissions to 0600 on Unix systems
     #[cfg(unix)]
     {
-        let mut perms = fs::metadata(output_path)?.permissions();
+        let mut perms = fs::metadata(output_path).map_err(|e| format!("Failed to read metadata: {}\n", e))?.permissions();
         perms.set_mode(0o600);
-        fs::set_permissions(output_path, perms)?;
+        fs::set_permissions(output_path, perms).map_err(|e| format!("Failed to set permissions: {}\n", e))?;
     }
 
     Ok(())
+}
+
+fn main() {
+    if let Err(msg) = run() {
+        let _ = std::io::stderr().write_all(msg.as_bytes());
+        std::process::exit(1);
+    }
 }
 
 #[cfg(test)]
