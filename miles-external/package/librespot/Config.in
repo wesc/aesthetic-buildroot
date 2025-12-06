@@ -15,7 +15,7 @@ comment "Compilation options"
 config BR2_PACKAGE_LIBRESPOT_VERSION
   depends on BR2_PACKAGE_LIBRESPOT
   string "version"
-  default "miles-0.7.1"
+  default "miles-0.8.0"
   help
     Use either a branch name or commit from github.com/librespot-org/librespot.
 
